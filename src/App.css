@@ -39,6 +39,10 @@
   padding: 20px;
 }
 
+.carTitle {
+  text-decoration: none;
+}
+
 .carTitle:hover {
   cursor: pointer;
 }

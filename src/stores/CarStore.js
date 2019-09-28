@@ -19,6 +19,14 @@ class CarStore {
 		return this.cars.filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
 	}
 
+	@action find(carId){
+		return(
+			this.cars.slice().filter(
+				c => c.id === parseInt(carId, 10)
+			)[0]
+		)
+	}
+
 	/*@computed get sortedCars() {
     	return this.cars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}*/
