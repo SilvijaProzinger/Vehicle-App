@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react';
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './components/Header.js';
-//import Car from './components/Car.js';
 import './App.css';
 
 @inject('CarStore')
@@ -19,13 +18,21 @@ class App extends Component {
   render(){
     const { filter, filteredCars } = this.props.CarStore;   
 
-    const carsList = filteredCars.map((car, index) => (
+    const Home = () => {
+    return ( 
+      <>
+      <div className="carsDiv">
+      {filteredCars.map((car, index) => (
           <div key={index}>
-          <Link to={`/car/${index + 1}`}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
-          <h3>{car.VehicleModel}</h3>
+          <Link to={`/car/${index + 1}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
+          <h4>{car.VehicleModel}</h4>
           <img src={car.image} alt="" width="300px" height="200px"/>
           </div>
-        ))
+        ))}
+      </div>
+      </>
+      )
+    }
 
     const carDetails = ({ match, location }) => {
       const {
@@ -34,22 +41,22 @@ class App extends Component {
 
       return (
       <>
-      <p>
-        <strong>Car ID: </strong>
-        {carId}
-      </p>
-      <p>
-        <strong>Vehicle Make: </strong>
+      <div className="carInfo">
+        <h3>Vehicle Make: </h3>
         {filteredCars[carId - 1].VehicleMake}
-      </p>
+        <h3>Vehicle Model:</h3>
+        {filteredCars[carId - 1].VehicleModel}
+      </div>
       </>
-      );
-    };
+      )
+    }
 
   return (
     <div className="App">
       <Router>
       <Header text="Vehicle App"/>
+      <Link to="/">Home</Link>
+      <Route exact path="/" component={Home} />
       <form onSubmit={e => this.filter(e)}>
         <input className="filter"
         type="text" 
@@ -62,13 +69,13 @@ class App extends Component {
 
       <button className="sortButton">Sort Alphabetically</button>
       <div className="carsDiv">
-        {carsList}
+        {Home}
       </div>
       <Route exact path="/car/:carId" component={carDetails} />
       </Router>
     </div>
 
-  );
+  )
 }
 }
 

@@ -41,12 +41,27 @@
 
 .carTitle {
   text-decoration: none;
+  color: #3c527a;
+
 }
 
 .carTitle:hover {
   cursor: pointer;
+  color: lightblue;
 }
 
+/*.carInfo {
+  position: fixed;
+  width: 500px;
+  height: 400px;
+  background-color: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  z-index: 10;
+}
+*/
 .sortButton {
   background: #6a85b6;
   border: none;
