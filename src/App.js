@@ -11,12 +11,13 @@ class App extends Component {
 
 //filter the cars by Vehicle Make
   filter = (e) => {
-    e.preventDefault();
-    this.props.CarStore.filter = e.target.value;
+    e.preventDefault()
+    this.props.CarStore.filter = e.target.value
+    e.target.value = ""
   }
 
   render(){
-    const { filter, filteredCars } = this.props.CarStore;   
+    const { filter, filteredCars } = this.props.CarStore 
 
     const Home = () => {
     return ( 
@@ -37,15 +38,18 @@ class App extends Component {
     const carDetails = ({ match, location }) => {
       const {
         params: { carId }
-      } = match;
+      } = match
 
       return (
       <>
       <div className="carInfo">
-        <h3>Vehicle Make: </h3>
+        <h3 className="carInfoTitle">Vehicle Make: </h3>
         {filteredCars[carId - 1].VehicleMake}
-        <h3>Vehicle Model:</h3>
+        <h3 className="carInfoTitle">Vehicle Model:</h3>
         {filteredCars[carId - 1].VehicleModel}
+        <div>
+        <img src={filteredCars[carId - 1].image} alt="" width="500px" height="350px"/>
+        </div>
       </div>
       </>
       )
@@ -55,8 +59,6 @@ class App extends Component {
     <div className="App">
       <Router>
       <Header text="Vehicle App"/>
-      <Link to="/">Home</Link>
-      <Route exact path="/" component={Home} />
       <form onSubmit={e => this.filter(e)}>
         <input className="filter"
         type="text" 
@@ -64,13 +66,11 @@ class App extends Component {
         value={filter}
         onChange={this.filter.bind(this)}
         />
-        <button className="searchButton">Search</button>
+        <button className="clearButton">Clear search</button>
       </form>
 
-      <button className="sortButton">Sort Alphabetically</button>
-      <div className="carsDiv">
-        {Home}
-      </div>
+      <Link to="/"><h2 className="home">Home</h2></Link>
+      <Route exact path="/" component={Home} />
       <Route exact path="/car/:carId" component={carDetails} />
       </Router>
     </div>

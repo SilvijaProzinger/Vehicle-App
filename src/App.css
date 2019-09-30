@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 .App {
@@ -21,14 +22,14 @@
   margin-right: 10px;
 }
 
-.searchButton {
+.clearButton {
   background: #6a85b6;
   border: none;
   padding: 10px 20px;
   color: white;
 }
 
-.searchButton:hover {
+.clearButton:hover {
   background: lightblue;
 }
 
@@ -39,29 +40,25 @@
   padding: 20px;
 }
 
-.carTitle {
-  text-decoration: none;
+.carTitle, .home {
   color: #3c527a;
-
 }
 
-.carTitle:hover {
+.carTitle:hover, .home:hover {
   cursor: pointer;
   color: lightblue;
 }
 
-/*.carInfo {
-  position: fixed;
-  width: 500px;
-  height: 400px;
-  background-color: white;
+.carInfo {
   text-align: center;
-  top: 50%;
-  left: 50%;
-  margin-left: -250px;
-  z-index: 10;
+  margin: 10px;
 }
-*/
+
+.carInfoTitle {
+  padding: 10px;
+  color: #3c527a;  
+}
+
 .sortButton {
   background: #6a85b6;
   border: none;
