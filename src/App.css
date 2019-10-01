@@ -5,23 +5,32 @@
 }
 
 .App {
-  text-align: center;
   min-height: 100vh;
 }
 
 .header {
-  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
-  height: 60px;
+  background-color: #3c527a;  
+  height: 15vh;
   margin-bottom: 20px;
-  letter-spacing: 3px;
+}
+
+.headerText {
+  color: white;
+  padding-left: 20px;
+}
+
+.filterSort {
+  padding-bottom: 30px;
+  margin: 20px;
 }
 
 .filter {
-  width: 50%;
+  width: 20%;
   padding: 10px;  
-  margin-right: 10px;
+  float: right;
 }
 
+/*
 .clearButton {
   background: #6a85b6;
   border: none;
@@ -32,8 +41,10 @@
 .clearButton:hover {
   background: lightblue;
 }
+*/
 
 .carsDiv {
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -49,9 +60,15 @@
   color: lightblue;
 }
 
+.car {
+  border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 .carInfo {
-  text-align: center;
   margin: 10px;
+  padding-bottom: 10px;
 }
 
 .carInfoTitle {
@@ -59,7 +76,30 @@
   color: #3c527a;  
 }
 
-.sortButton {
+.button {
+  padding: 8px;
+  margin: 5px;
+  float: right;
+  border: none;
+}
+
+.closeButton {
+  background: #ff1a1a
+}
+
+.closeButton:hover {
+  background: #ff8533;
+}
+
+.editButton {
+  background: #6a85b6;
+}
+
+.editButton:hover {
+  background: lightblue;
+}
+
+/*.sortButton {
   background: #6a85b6;
   border: none;
   padding: 10px 20px;
@@ -70,3 +110,5 @@
 .sortButton:hover {
   background: lightblue;
 }
+
+*/

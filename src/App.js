@@ -13,18 +13,23 @@ class App extends Component {
   filter = (e) => {
     e.preventDefault()
     this.props.CarStore.filter = e.target.value
-    e.target.value = ""
   }
+
+  /*editCar = (e) => {
+    e.preventDefault()
+
+  }*/
 
   render(){
     const { filter, filteredCars } = this.props.CarStore 
 
+    //Home component with the list of cars
     const Home = () => {
     return ( 
       <>
       <div className="carsDiv">
       {filteredCars.map((car, index) => (
-          <div key={index}>
+          <div key={index} className="car">
           <Link to={`/car/${index + 1}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
           <h4>{car.VehicleModel}</h4>
           <img src={car.image} alt="" width="300px" height="200px"/>
@@ -34,7 +39,8 @@ class App extends Component {
       </>
       )
     }
-
+  
+  //Details view for each car
     const carDetails = ({ match, location }) => {
       const {
         params: { carId }
@@ -43,6 +49,8 @@ class App extends Component {
       return (
       <>
       <div className="carInfo">
+        <Link to="/"><button className="button closeButton">X</button></Link>
+        <button className="button editButton">Edit</button>
         <h3 className="carInfoTitle">Vehicle Make: </h3>
         {filteredCars[carId - 1].VehicleMake}
         <h3 className="carInfoTitle">Vehicle Model:</h3>
@@ -59,22 +67,21 @@ class App extends Component {
     <div className="App">
       <Router>
       <Header text="Vehicle App"/>
+      <div className="filterSort">
       <form onSubmit={e => this.filter(e)}>
         <input className="filter"
         type="text" 
-        placeholder="Search by Vehicle Make" 
+        placeholder="Filter by vehicle make" 
         value={filter}
         onChange={this.filter.bind(this)}
         />
-        <button className="clearButton">Clear search</button>
       </form>
+      </div>
 
-      <Link to="/"><h2 className="home">Home</h2></Link>
       <Route exact path="/" component={Home} />
       <Route exact path="/car/:carId" component={carDetails} />
       </Router>
     </div>
-
   )
 }
 }
