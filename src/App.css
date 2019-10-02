@@ -9,18 +9,24 @@
 }
 
 .header {
-  background-color: #3c527a;  
-  height: 15vh;
   margin-bottom: 20px;
 }
 
 .headerText {
-  color: white;
-  padding-left: 20px;
+  font-family: 'Lato', sans-serif;
+  color: #006699;
+  text-align: center;
+  margin: 8px;
+}
+
+hr {
+  height: 2px;
+  background: linear-gradient(to right, #006699, #00cc99);
+  border: 0;
 }
 
 .filterSort {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   margin: 20px;
 }
 
@@ -51,13 +57,13 @@
   padding: 20px;
 }
 
-.carTitle, .home {
-  color: #3c527a;
+.carTitle {
+  color: #006699;
 }
 
-.carTitle:hover, .home:hover {
+.carTitle:hover {
   cursor: pointer;
-  color: lightblue;
+  color: #00cc99;
 }
 
 .car {
@@ -67,13 +73,11 @@
 }
 
 .carInfo {
-  margin: 10px;
-  padding-bottom: 10px;
+  padding: 15px;
 }
 
 .carInfoTitle {
-  padding: 10px;
-  color: #3c527a;  
+  color: #006699;
 }
 
 .button {
@@ -96,7 +100,7 @@
 }
 
 .editButton:hover {
-  background: lightblue;
+  background: #00cc99;
 }
 
 /*.sortButton {

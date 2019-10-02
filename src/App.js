@@ -23,7 +23,7 @@ class App extends Component {
   render(){
     const { filter, filteredCars } = this.props.CarStore 
 
-    //Home component with the list of cars
+    //Home component with the list of cars 
     const Home = () => {
     return ( 
       <>
@@ -40,7 +40,7 @@ class App extends Component {
       )
     }
   
-  //Details view for each car
+  //Details for each car
     const carDetails = ({ match, location }) => {
       const {
         params: { carId }
@@ -67,6 +67,7 @@ class App extends Component {
     <div className="App">
       <Router>
       <Header text="Vehicle App"/>
+      <hr />
       <div className="filterSort">
       <form onSubmit={e => this.filter(e)}>
         <input className="filter"
