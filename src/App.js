@@ -23,16 +23,29 @@ class App extends Component {
   render(){
     const { filter, filteredCars } = this.props.CarStore 
 
-    //Home component with the list of cars 
+    //Home component with the list of cars and filter functionality 
     const Home = () => {
     return ( 
       <>
+      {/*text input for filter*/}
+      <div className="filterSort">
+      <form onSubmit={e => this.filter(e)}>
+        <input className="filter"
+        type="text" 
+        placeholder="Filter by vehicle make" 
+        value={filter}
+        onChange={this.filter.bind(this)}
+        />
+      </form>
+      </div>
+
+      {/*return the list of cars*/}
       <div className="carsDiv">
       {filteredCars.map((car, index) => (
           <div key={index} className="car">
           <Link to={`/car/${index + 1}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
           <h4>{car.VehicleModel}</h4>
-          <img src={car.image} alt="" width="300px" height="200px"/>
+          <img src={car.image} alt="" className="listImage"/>
           </div>
         ))}
       </div>
@@ -48,15 +61,15 @@ class App extends Component {
 
       return (
       <>
-      <div className="carInfo">
         <Link to="/"><button className="button closeButton">X</button></Link>
         <button className="button editButton">Edit</button>
+        <div className="carInfo">
         <h3 className="carInfoTitle">Vehicle Make: </h3>
         {filteredCars[carId - 1].VehicleMake}
         <h3 className="carInfoTitle">Vehicle Model:</h3>
         {filteredCars[carId - 1].VehicleModel}
         <div>
-        <img src={filteredCars[carId - 1].image} alt="" width="500px" height="350px"/>
+        <img src={filteredCars[carId - 1].image} alt="" className="detailsImage"/>
         </div>
       </div>
       </>
@@ -68,16 +81,6 @@ class App extends Component {
       <Router>
       <Header text="Vehicle App"/>
       <hr />
-      <div className="filterSort">
-      <form onSubmit={e => this.filter(e)}>
-        <input className="filter"
-        type="text" 
-        placeholder="Filter by vehicle make" 
-        value={filter}
-        onChange={this.filter.bind(this)}
-        />
-      </form>
-      </div>
 
       <Route exact path="/" component={Home} />
       <Route exact path="/car/:carId" component={carDetails} />

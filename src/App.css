@@ -36,25 +36,17 @@ hr {
   float: right;
 }
 
-/*
-.clearButton {
-  background: #6a85b6;
-  border: none;
-  padding: 10px 20px;
-  color: white;
-}
-
-.clearButton:hover {
-  background: lightblue;
-}
-*/
-
 .carsDiv {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
+}
+
+.listImage {
+  width: 300px;
+  height: 200px;
 }
 
 .carTitle {
@@ -70,6 +62,11 @@ hr {
   border: 1px solid grey;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.detailsImage {
+  width: 500px;
+  height: 350px;
 }
 
 .carInfo {
@@ -88,7 +85,8 @@ hr {
 }
 
 .closeButton {
-  background: #ff1a1a
+  background: #ff1a1a;
+  margin-top: 20px;
 }
 
 .closeButton:hover {
@@ -97,22 +95,24 @@ hr {
 
 .editButton {
   background: #6a85b6;
+  margin-top: 20px;
 }
 
 .editButton:hover {
   background: #00cc99;
 }
 
-/*.sortButton {
-  background: #6a85b6;
-  border: none;
-  padding: 10px 20px;
-  color: white;
-  margin-top: 20px;
+/*media queries*/
+@media only screen and ((min-width: 483px) and (max-width: 681px)){
+  .listImage {
+    width: 200px;
+    height: 150px;
+  }
 }
 
-.sortButton:hover {
-  background: lightblue;
+@media only screen and (max-width: 520px){
+  .detailsImage {
+    width: 300px;
+    height: 200px;
+  }
 }
-
-*/
