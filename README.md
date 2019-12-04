@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Clicking on each car shows details about it 
 * Editing car details (in progress)
 * Filtering by vehicle make 
-* Sorting (to be created)
+* Sorting 
 * Page numbering (to be created)
 
 ## How to run

@@ -19,7 +19,7 @@ class CarStore {
 	}
 
 	@computed get sortedCars() {
-    	return this.cars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
+    	return this.filteredCars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
 }

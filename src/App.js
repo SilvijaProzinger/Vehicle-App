@@ -11,8 +11,6 @@ class App extends Component {
       <div className="App">
       <Router>
         <Header text="Vehicle App"/>
-        <hr />
-
         <Route exact path="/" component={Cars} />
         <Route exact path="/car/:carId" component={CarDetails}/>
       </Router>
