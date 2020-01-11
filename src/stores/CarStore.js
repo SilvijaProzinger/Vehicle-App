@@ -1,6 +1,9 @@
 import { observable, computed, action } from 'mobx';
+import React from 'react';
 
 class CarStore {
+	@observable textInput = React.createRef();
+
 	@observable cars = [
 		{ id: "0", VehicleMake: "Ford Taurus", VehicleModel: "SHO", image:"https://cars.usnews.com/static/images/Auto/izmo/i10477998/2017_ford_taurus_angularfront.jpg" },
 		{ id: "1", VehicleMake: "Toyota", VehicleModel: "SE (6MT)", image:"https://www.seegertoyota.com/inventoryphotos/2063/5yfm4rce0lp010524/sp/2.jpg?height=400"},
@@ -11,7 +14,7 @@ class CarStore {
 	]
 
 	//filter the cars by Vehicle Make
-  	@observable filter = ""
+  	@observable filterTerm = ""
 
 	@computed get filteredCars(){
 		const matchesFilter = new RegExp(this.filter, "i")
@@ -22,6 +25,11 @@ class CarStore {
     	return this.filteredCars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
+	@action editCar = (id) => {
+		//const index = this.cars.findIndex(item => item.id === car.id)	
+		console.log(id)
+		this.cars[id].VehicleModel = this.textInput.current.value
+	}
 }
 
 const store = new CarStore()

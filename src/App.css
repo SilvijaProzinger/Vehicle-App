@@ -132,6 +132,7 @@
 
 .saveButton {
   background: #4B5C94;
+  float: none;
 }
 
 .saveButton:hover {
@@ -152,6 +153,12 @@
   justify-content: space-between;
   margin: 0 10% 0 10%;
   flex-grow: 30% 70%;
+}
+
+.editInput {
+  text-align: center;
+  padding: 8px;
+  margin: 5px;
 }
 
 /*media queries*/
