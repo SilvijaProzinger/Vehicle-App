@@ -40,7 +40,7 @@ class Cars extends Component {
 		    </form>
       		</div>
 			<div className="carsDiv">
-      			{this.state.cars.map((car, index) => (
+      			{this.props.CarStore.filteredCars.map((car, index) => (
 			        <div key={index} className="car">
 			        <img src={car.image} alt="" className="listImage"/>
 			        <Link to={`/car/${index}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>

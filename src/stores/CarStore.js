@@ -14,7 +14,7 @@ class CarStore {
 	]
 
 	//filter the cars by Vehicle Make
-  	@observable filterTerm = ""
+  	@observable filter = ""
 
 	@computed get filteredCars(){
 		const matchesFilter = new RegExp(this.filter, "i")
