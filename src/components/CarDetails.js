@@ -15,7 +15,7 @@ const CarDetails = ({ CarStore, match, location, props}) => {
 	const openEditView = () => {
 		return (
 			<div style={{textAlign: 'center'}}>
-			<h3>Enter a new Vehicle Make value</h3>
+			<h3>Enter a new Vehicle Model</h3>
 		  		<input 
 		  		className="editInput"
 		  		type='text' 
