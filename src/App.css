@@ -46,7 +46,7 @@
   width: 130px;
   padding: 10px;  
   float: right;
-  margin-right: 8%;
+  margin: 5px;
 }
 
 .carsDiv {
@@ -141,6 +141,7 @@
 
 .sortButton {
   background: #4B5C94;
+  //margin-right: 2%;
 }
 
 .sortButton:hover {
@@ -150,8 +151,8 @@
 .filterSort {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0 10% 0 10%;
+  justify-content: right;
+  margin: 0 11% 0 10%;
   flex-grow: 30% 70%;
 }
 
@@ -182,5 +183,23 @@
   }
   .detailsImage {
     margin: 0;
+  }
+
+  .headerText {
+    margin: 35px 5% 10px 0;
+    letter-spacing: 0;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .headerText {
+    margin: 35px 5% 10px 10px;
+    font-size: 0.9em;
+  }
+
+  .headerImage {
+    width: 200px;
+    height: 100px;
+    margin-top: 20px;
   }
 }

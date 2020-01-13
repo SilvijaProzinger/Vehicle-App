@@ -14,7 +14,6 @@ class Cars extends Component {
 	filter = (e) => {
 	    e.preventDefault()
 	    this.props.CarStore.filter = e.target.value
-	    console.log(this.props.CarStore.filter)
 	}
 
 	//sort cars by Vehicle Make
