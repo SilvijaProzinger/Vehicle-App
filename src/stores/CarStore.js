@@ -25,9 +25,8 @@ class CarStore {
     	return this.filteredCars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
+  	//edit the car Vehicle Make property by it's id
 	@action editCar = (id) => {
-		//const index = this.cars.findIndex(item => item.id === car.id)	
-		console.log(id)
 		this.cars[id].VehicleModel = this.textInput.current.value
 	}
 }
