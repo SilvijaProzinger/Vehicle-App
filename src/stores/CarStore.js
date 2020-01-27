@@ -3,6 +3,7 @@ import React from 'react';
 
 class CarStore {
 	@observable textInput = React.createRef();
+	@observable isSorted = false;
 
 	@observable cars = [
 		{ id: "0", VehicleMake: "Ford Taurus", VehicleModel: "SHO", image:"https://cars.usnews.com/static/images/Auto/izmo/i10477998/2017_ford_taurus_angularfront.jpg" },
@@ -26,7 +27,7 @@ class CarStore {
 	}
 
 	@computed get sortedCars() {
-    	return this.filteredCars.sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
+    	return this.filteredCars.slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
   	//edit the car Vehicle Make property by it's id
