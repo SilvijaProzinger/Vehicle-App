@@ -71,6 +71,15 @@
   color: #E32B2B;
 }
 
+.carSubtitle {
+  color: black;
+}
+
+.carSubtitle:hover {
+  cursor: pointer;
+  color: #E32B2B;
+}
+
 .car {
   padding: 10px;
   margin: 1%;
@@ -160,6 +169,19 @@
   text-align: center;
   padding: 8px;
   margin: 5px;
+}
+
+.backButton {
+  background: gray;
+}
+
+.backButton:hover {
+  background: lightgray;
+}
+
+.title {
+  text-align: center;
+  margin: 2%;
 }
 
 /*media queries*/
