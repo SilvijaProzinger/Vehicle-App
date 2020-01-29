@@ -2,8 +2,14 @@ import { observable, computed, action } from 'mobx';
 import React from 'react';
 
 class CarStore {
-	@observable textInput = React.createRef();
+	@observable makeInput = React.createRef();
+	@observable modelInput = React.createRef();
+	@observable imageInput = React.createRef();
 	@observable isSorted = false;
+	@observable newId = React.createRef();
+	@observable newMake = React.createRef();
+	@observable newModel = React.createRef();
+	@observable newImage = React.createRef();
 
 	@observable cars = [
 		{ id: "0", VehicleMake: "Ford Taurus", VehicleModel: "SHO", image:"https://cars.usnews.com/static/images/Auto/izmo/i10477998/2017_ford_taurus_angularfront.jpg" },
@@ -32,9 +38,20 @@ class CarStore {
 
   	//edit the car Vehicle Make property by it's id
 	@action editCar = (id) => {
-		this.cars[id].VehicleModel = this.textInput.current.value
+		this.cars[id].VehicleModel = this.modelInput.current.value
+		this.cars[id].VehicleMake = this.makeInput.current.value
+		this.cars[id].image = this.imageInput.current.value
+	}
+
+	//add a new car 
+	@action addCar = ({id, VehicleMake, VehicleModel, image}) => {
+		this.cars.push({
+			id: this.newId.current.value, 
+			VehicleMake: this.newMake.current.value, 
+			VehicleModel: this.newModel.current.value,
+			image: this.newImage.current.value
+		})
 	}
 }
-
 const store = new CarStore()
 export default store

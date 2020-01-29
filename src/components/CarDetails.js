@@ -7,21 +7,38 @@ const CarDetails = ({ CarStore, match, location, props}) => {
     	params: { carId }
   	} = match
 
-  	//need to fix the sorting so that when sorted, the car details are in right order
-	const [ value, setValue ] = useState(CarStore.filteredCars[carId].VehicleModel)
+	const [ model, setModel ] = useState(CarStore.filteredCars[carId].VehicleModel)
+	const [ make, setMake ] = useState(CarStore.filteredCars[carId].VehicleMake)
+	const [ image, setImage ] = useState(CarStore.filteredCars[carId].image)
 	const [ id ] = useState(CarStore.filteredCars[carId].id)
 	const [ isInEditMode, setEdit ] = useState(false)
 
 	const openEditView = () => {
 		return (
 			<div style={{textAlign: 'center'}}>
-			<h3>Enter a new Vehicle Model</h3>
+			<h3>Enter a new Vehicle Make</h3>
 		  		<input 
 		  		className="editInput"
 		  		type='text' 
-		  		defaultValue={value}
-		  		ref={CarStore.textInput}
-		  		onChange={(event) => setValue(CarStore.textInput.current.value)}
+		  		defaultValue={make}
+		  		ref={CarStore.makeInput}
+		  		onChange={(event) => setMake(CarStore.makeInput.current.value)}
+		  		/>
+		  	<h3>Enter a new Vehicle Model</h3>
+		  		<input 
+		  		className="editInput"
+		  		type='text' 
+		  		defaultValue={model}
+		  		ref={CarStore.modelInput}
+		  		onChange={(event) => setModel(CarStore.modelInput.current.value)}
+		  		/>
+		  	<h3>Enter a new image</h3>
+		  		<input 
+		  		className="editInput"
+		  		type='text' 
+		  		defaultValue={image}
+		  		ref={CarStore.imageInput}
+		  		onChange={(event) => setImage(CarStore.imageInput.current.value)}
 		  		/>
 		  		<button className="button saveButton" onClick={updateCar}>Save</button>
 		  	</div>
@@ -41,10 +58,10 @@ const CarDetails = ({ CarStore, match, location, props}) => {
 				    <button className="button editButton"onClick={() => setEdit(!isInEditMode)}>Edit</button>
 			</div>
 			<div className="carInfo">
-			        <h2 className="carInfoTitle">{CarStore.filteredCars[carId].VehicleMake}</h2>
-			        <h3 className="carInfoTitle">{value}</h3>
+			        <h2 className="carInfoTitle">{make}</h2>
+			        <h3 className="carInfoTitle">{model}</h3>
 				    <div>
-				        <img src={CarStore.filteredCars[carId].image} alt="" className="detailsImage"/>
+				        <img src={image} alt="" className="detailsImage"/>
 				    </div>
 			</div>
 		</>

@@ -142,6 +142,8 @@
 .saveButton {
   background: #4B5C94;
   float: none;
+  display: block;
+  margin: 0 auto;
 }
 
 .saveButton:hover {
@@ -154,21 +156,21 @@
 }
 
 .sortButton:hover {
-  background: #00cc99
+  background: #00cc99;
 }
 
 .filterSort {
   display: flex;
   flex-direction: row;
-  justify-content: right;
-  margin: 0 11% 0 10%;
+  //justify-content: right;
+  margin: 0 11% 0 12%;
   flex-grow: 30% 70%;
 }
 
 .editInput {
   text-align: center;
   padding: 8px;
-  margin: 5px;
+  margin: 15px;
 }
 
 .backButton {
@@ -182,6 +184,71 @@
 .title {
   text-align: center;
   margin: 2%;
+}
+
+.addDelete {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin: 0 11% 0 12%;
+  flex-grow: 30% 70%;
+}
+
+.addButton {
+  background-color: #4B5C94;
+}
+
+.addButton:hover {
+  background-color: #00cc99;
+}
+
+.deleteButton {
+  background-color: #E32B2B;
+}
+
+.deleteButton:hover {
+  background-color: #ff8533;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.saveNewButton {
+  background-color: #4B5C94;
+  margin: 0 auto;
+  display: block;
+  float: none;
+}
+
+.saveNewButton:hover {
+  background-color: #00cc99
+}
+
+.addInput {
+  padding: 1%;
+  margin: 20px;
+  width: 200px;
+  display: block;
+}
+
+.addForm {
+  text-align: center;
+}
+
+.closeNewButton {
+  background-color: #E32B2B;
+  position: relative;
+  margin: -15%;
+  width: 25px;
+  height: 30px;
+}
+
+.closeNewButton:hover {
+  background-color: #ff8533;
 }
 
 /*media queries*/

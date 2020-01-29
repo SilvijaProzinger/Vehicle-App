@@ -39,10 +39,24 @@ class Cars extends Component {
       		)
 		}
 
+		const addOption = () => {
+			return (
+			<>
+				<div className="addDelete">
+				<Link to={`/add`} style={{ textDecoration: 'none' }}><button className="button addButton">Add new car</button></Link>
+				<button className="button deleteButton">Delete</button>
+				</div>
+			</>
+			)
+		}
+
 		const openDefaultView = () => {
 			return (
 			<>
+			<div className="options">
 			{filterAndSort()}
+			{addOption()}
+			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.filteredCars.map((car) => (
 				        <div key={car.id} className="car">
@@ -60,7 +74,10 @@ class Cars extends Component {
 		const openSortedView = () => {
 			return (
 			<>
+			<div className="options">
 			{filterAndSort()}
+			{addOption()}
+			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.sortedCars.map((car) => (
 				        <div key={car.id} className="car">
