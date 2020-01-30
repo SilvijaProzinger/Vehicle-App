@@ -27,6 +27,8 @@ class CarStore {
 	//filter the cars by Vehicle Make
   	@observable filter = ""
 
+  	@observable lastId = this.cars.slice(-1)[0].id
+
 	@computed get filteredCars(){
 		const matchesFilter = new RegExp(this.filter, "i")
 		return this.cars.filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
@@ -46,12 +48,17 @@ class CarStore {
 	//add a new car 
 	@action addCar = ({id, VehicleMake, VehicleModel, image}) => {
 		this.cars.push({
-			id: this.newId.current.value, 
+			id: ++this.lastId, 
 			VehicleMake: this.newMake.current.value, 
 			VehicleModel: this.newModel.current.value,
 			image: this.newImage.current.value
 		})
 	}
+
+	@action removeCar = (id) => {
+	    const filteredData = this.cars.filter(car => car !== id);
+	    this.cars = filteredData;
+  	}
 }
 const store = new CarStore()
 export default store

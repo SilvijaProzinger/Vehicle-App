@@ -175,6 +175,7 @@
 
 .backButton {
   background: gray;
+  margin: 2%;
 }
 
 .backButton:hover {
@@ -230,25 +231,34 @@
 
 .addInput {
   padding: 1%;
-  margin: 20px;
   width: 200px;
   display: block;
+  margin: 0 auto 1%;
 }
 
 .addForm {
   text-align: center;
+  padding: 2%;
 }
 
 .closeNewButton {
-  background-color: #E32B2B;
-  position: relative;
-  margin: -15%;
-  width: 25px;
-  height: 30px;
+  background: #E32B2B;
+  margin: 10px 10px 0 0;
 }
 
 .closeNewButton:hover {
-  background-color: #ff8533;
+  background: #ff8533;
+}
+
+.delete {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  width: 30px;
+  height: 30px;
 }
 
 /*media queries*/

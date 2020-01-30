@@ -9,8 +9,8 @@ const VehicleMake = ({ CarStore, match, location, props}) => {
 
   	return (
   		<>
-  		<h3 className="title">Vehicle Makes</h3>
   		<Link to="/"><button className="button backButton">Back</button></Link>
+  		<h3 className="title">Vehicle Makes</h3>
   		<div className="carsDiv">
       		{CarStore.filteredCars.filter(car => car.VehicleMake === carMake).map((car) => (
 			    <div key={car.id} className="car">

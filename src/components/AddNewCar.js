@@ -3,22 +3,18 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 const AddNewCar = ({CarStore}) => {
+
 	const add = (e) => {
 		e.preventDefault()
-		CarStore.addCar(CarStore.newMake.current.value)
+		CarStore.addCar(CarStore.newMake.current.value)	
 	}
 
 	return (
 	<>
+		<Link to="/"><button className="button closeNewButton">X</button></Link>
 		<div className="addForm">
-		<Link to="/"><button className="button closeButton">X</button></Link>
 		<h3 className="title">Add a new car</h3>
 		<form>
-			<input className="addInput"
-				type="text"
-				placeholder="Enter a vehicle id"
-				ref={CarStore.newId} 
-			/>
 			<input className="addInput"
 				type="text"
 				placeholder="Enter a vehicle make"
@@ -35,7 +31,7 @@ const AddNewCar = ({CarStore}) => {
 				ref={CarStore.newImage}
 			/>
 		</form>
-		<button className="button saveNewButton" onClick={add}>Save new car</button>
+		<button className="button saveNewButton" onClick={add}><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Save new car</Link></button>
 		</div>
 	</>
 	)

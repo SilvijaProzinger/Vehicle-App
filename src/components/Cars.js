@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
+import trashIcon from '../icons8-trash-64.png';
 
 @inject('CarStore')
 @observer
@@ -39,7 +40,7 @@ class Cars extends Component {
       		)
 		}
 
-		const addOption = () => {
+		const addOrDelete = () => {
 			return (
 			<>
 				<div className="addDelete">
@@ -55,11 +56,12 @@ class Cars extends Component {
 			<>
 			<div className="options">
 			{filterAndSort()}
-			{addOption()}
+			{addOrDelete()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.filteredCars.map((car) => (
 				        <div key={car.id} className="car">
+				        <button className="delete"><img src={trashIcon} alt="" className="deleteIcon" /></button>
 				        <img src={car.image} alt="" className="listImage"/>
 				        <Link to={`/makes/${car.VehicleMake}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
 				        <Link to={`/models/${car.VehicleModel}`} style={{ textDecoration: 'none' }}><h4 className="carSubtitle">{car.VehicleModel}</h4></Link>
@@ -76,7 +78,7 @@ class Cars extends Component {
 			<>
 			<div className="options">
 			{filterAndSort()}
-			{addOption()}
+			{addOrDelete()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.sortedCars.map((car) => (
