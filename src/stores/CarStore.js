@@ -56,8 +56,8 @@ class CarStore {
 	}
 
 	@action removeCar = (id) => {
-	    const filteredData = this.cars.filter(car => car !== id);
-	    this.cars = filteredData;
+		console.log(id)
+	    this.cars.splice(id, 1)
   	}
 }
 const store = new CarStore()

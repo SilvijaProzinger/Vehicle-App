@@ -19,6 +19,11 @@ class Cars extends Component {
 		this.props.CarStore.isSorted = true
 	}
 
+	delete = (id) => {
+		console.log(this.id)
+		this.props.CarStore.removeCar(id)
+	}
+
 	render() {
 		const { filter } = this.props.CarStore
 
@@ -40,12 +45,11 @@ class Cars extends Component {
       		)
 		}
 
-		const addOrDelete = () => {
+		const addOption = () => {
 			return (
 			<>
-				<div className="addDelete">
+				<div className="addDiv">
 				<Link to={`/add`} style={{ textDecoration: 'none' }}><button className="button addButton">Add new car</button></Link>
-				<button className="button deleteButton">Delete</button>
 				</div>
 			</>
 			)
@@ -56,12 +60,14 @@ class Cars extends Component {
 			<>
 			<div className="options">
 			{filterAndSort()}
-			{addOrDelete()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.filteredCars.map((car) => (
 				        <div key={car.id} className="car">
-				        <button className="delete"><img src={trashIcon} alt="" className="deleteIcon" /></button>
+				        <button className="delete" title="Delete car" onClick={this.delete.bind(this, car.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>
 				        <img src={car.image} alt="" className="listImage"/>
 				        <Link to={`/makes/${car.VehicleMake}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
 				        <Link to={`/models/${car.VehicleModel}`} style={{ textDecoration: 'none' }}><h4 className="carSubtitle">{car.VehicleModel}</h4></Link>
@@ -78,11 +84,14 @@ class Cars extends Component {
 			<>
 			<div className="options">
 			{filterAndSort()}
-			{addOrDelete()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.CarStore.sortedCars.map((car) => (
 				        <div key={car.id} className="car">
+				        <button className="delete" title="Delete car" onClick={this.delete.bind(this, car.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>
 				        <img src={car.image} alt="" className="listImage"/>
 				        <Link to={`/makes/${car.VehicleMake}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>
 				        <Link to={`/models/${car.VehicleModel}`} style={{ textDecoration: 'none' }}><h4 className="carSubtitle">{car.VehicleModel}</h4></Link>
