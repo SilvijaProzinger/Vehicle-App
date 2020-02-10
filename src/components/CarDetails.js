@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
-const CarDetails = ({ CarStore, match, location, props}) => {
+const CarDetails = ({ CarStore, match, location, props }) => {
     const {
     	params: { carId }
   	} = match

@@ -19,6 +19,7 @@ class Cars extends Component {
 		this.props.CarStore.isSorted = true
 	}
 
+	//delete cars by id
 	delete = (id) => {
 		console.log(this.id)
 		this.props.CarStore.removeCar(id)
@@ -63,7 +64,7 @@ class Cars extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.CarStore.filteredCars.map((car) => (
+	      			{this.props.CarStore.filteredCars.filter(car => car !== null).map((car) => (
 				        <div key={car.id} className="car">
 				        <button className="delete" title="Delete car" onClick={this.delete.bind(this, car.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />

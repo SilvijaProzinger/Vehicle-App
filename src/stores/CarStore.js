@@ -35,7 +35,7 @@ class CarStore {
 	}
 
 	@computed get sortedCars() {
-    	return this.filteredCars.slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
+    	return this.filteredCars.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
   	//edit the car Vehicle Make property by it's id
@@ -55,9 +55,10 @@ class CarStore {
 		})
 	}
 
+	//delete a car by id 
 	@action removeCar = (id) => {
-		console.log(id)
-	    this.cars.splice(id, 1)
+		//had to replace the splice method so that the cars id and the indexes aren't mutated after deleting 
+		this.cars[id] = null
   	}
 }
 const store = new CarStore()
