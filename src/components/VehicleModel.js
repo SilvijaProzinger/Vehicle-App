@@ -12,7 +12,7 @@ const VehicleModel = ({ CarStore, match, location, props}) => {
   		<Link to="/"><button className="button backButton">Back</button></Link>
   		<h3 className="title">Vehicle Models</h3>
   		<div className="carsDiv">
-      		{CarStore.filteredCars.filter(car => car.VehicleModel === carModel && car !== null).map((car) => (
+      		{CarStore.filteredCars.filter(car => car !== null && car.VehicleModel === carModel).map((car) => (
 			    <div key={car.id} className="car">
 		        <img src={car.image} alt="" className="listImage"/>
 		        <Link to={`/makes/${car.VehicleMake}`} style={{ textDecoration: 'none' }}><h3 className="carTitle">{car.VehicleMake}</h3></Link>

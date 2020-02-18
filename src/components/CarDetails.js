@@ -7,10 +7,10 @@ const CarDetails = ({ CarStore, match, location, props }) => {
     	params: { carId }
   	} = match
 
-	const [ model, setModel ] = useState(CarStore.filteredCars[carId].VehicleModel)
-	const [ make, setMake ] = useState(CarStore.filteredCars[carId].VehicleMake)
-	const [ image, setImage ] = useState(CarStore.filteredCars[carId].image)
-	const [ id ] = useState(CarStore.filteredCars[carId].id)
+	const [ model, setModel ] = useState(CarStore.cars[carId].VehicleModel)
+	const [ make, setMake ] = useState(CarStore.cars[carId].VehicleMake)
+	const [ image, setImage ] = useState(CarStore.cars[carId].image)
+	const [ id ] = useState(CarStore.cars[carId].id)
 	const [ isInEditMode, setEdit ] = useState(false)
 
 	const openEditView = () => {
