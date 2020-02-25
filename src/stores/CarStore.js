@@ -1,5 +1,5 @@
-import { observable, computed, action } from 'mobx';
 import React from 'react';
+import { observable, computed, action } from 'mobx';
 
 class CarStore {
 	@observable makeInput = React.createRef();
@@ -29,9 +29,19 @@ class CarStore {
 
   	@observable lastId = this.cars.slice(-1)[0].id
 
+  	@observable currentPage = 1
+  	@observable carsPerPage = 6
+
+  	@observable indexOfLastCar = (this.currentPage * this.carsPerPage)
+  	@observable indexOfFirstCar = (this.indexOfLastCar - this.carsPerPage)
+
+  	@computed get currentCars (){
+  		return this.filteredCars.slice(this.indexOfFirstCar, this.indexOfLastCar)
+  	}
+
 	@computed get filteredCars(){
 		const matchesFilter = new RegExp(this.filter, "i")
-		return this.cars.filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
+		return this.cars.filter(car => car !== null).filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
 	}
 
 	@computed get sortedCars() {
@@ -57,8 +67,14 @@ class CarStore {
 
 	//delete a car by id 
 	@action removeCar = (id) => {
-		//had to replace the splice method so that the cars id and the indexes aren't mutated after deleting 
+		//had to replace the splice method so that the cars array isn't mutated after deleting 
 		this.cars[id] = null
+  	}
+
+  	@action setPage = (pageNumber) => {
+  		this.currentPage = pageNumber
+  		this.indexOfLastCar = (this.currentPage * this.carsPerPage)
+  		this.indexOfFirstCar = (this.indexOfLastCar - this.carsPerPage)
   	}
 }
 const store = new CarStore()

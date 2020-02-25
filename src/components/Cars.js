@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import trashIcon from '../icons8-trash-64.png';
+import Pagination from './Pagination.js';
 
 @inject('CarStore')
 @observer
@@ -21,8 +22,12 @@ class Cars extends Component {
 
 	//delete cars by id
 	delete = (id) => {
-		console.log(this.id)
+		console.log(id)
 		this.props.CarStore.removeCar(id)
+	}
+
+	paginate = (pageNumber) => {
+		this.props.CarStore.setPage(pageNumber)
 	}
 
 	render() {
@@ -64,7 +69,7 @@ class Cars extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.CarStore.filteredCars.filter(car => car !== null).map((car) => (
+	      			{this.props.CarStore.currentCars.filter(car => car !== null).map((car) => (
 				        <div key={car.id} className="car">
 				        <button className="delete" title="Delete car" onClick={this.delete.bind(this, car.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -76,6 +81,10 @@ class Cars extends Component {
 				        </div>
 	        		))}
 	      		</div>
+	      		<Pagination 
+	      			carsPerPage={this.props.CarStore.carsPerPage} 
+	      			totalCars={this.props.CarStore.filteredCars.length}
+	      			paginate={this.paginate}/>
 	      	</>
 			)
 		}

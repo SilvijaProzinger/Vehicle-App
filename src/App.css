@@ -261,6 +261,27 @@
   height: 25px;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.pageItem {
+  padding: 10px;
+  background-color: lightgray;
+  margin: 5px;
+}
+
+.pageLink {
+  color: black;
+}
+
+.pageLink:visited {
+  text-decoration: none;
+}
+
 /*media queries*/
 @media only screen and ((min-width: 483px) and (max-width: 681px)){
   .listImage {
