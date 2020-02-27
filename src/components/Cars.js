@@ -84,7 +84,8 @@ class Cars extends Component {
 	      		<Pagination 
 	      			carsPerPage={this.props.CarStore.carsPerPage} 
 	      			totalCars={this.props.CarStore.filteredCars.length}
-	      			paginate={this.paginate}/>
+	      			paginate={this.paginate}
+	      		/>
 	      	</>
 			)
 		}
@@ -97,7 +98,7 @@ class Cars extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.CarStore.sortedCars.map((car) => (
+	      			{this.props.CarStore.currentSortedCars.map((car) => (
 				        <div key={car.id} className="car">
 				        <button className="delete" title="Delete car" onClick={this.delete.bind(this, car.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -109,6 +110,11 @@ class Cars extends Component {
 				        </div>
 	        		))}
 		      	</div>
+		      	<Pagination 
+	      			carsPerPage={this.props.CarStore.carsPerPage} 
+	      			totalCars={this.props.CarStore.sortedCars.length}
+	      			paginate={this.paginate}
+	      		/>
 		    </>
 			)
 		}

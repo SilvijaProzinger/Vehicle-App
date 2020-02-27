@@ -268,10 +268,19 @@
   list-style-type: none;
 }
 
-.pageItem {
+.pageItem a{
   padding: 10px;
   background-color: lightgray;
   margin: 5px;
+  color: black;
+}
+
+.pageItem a:hover:not(.active) {
+  background-color: #00cc99;
+}
+
+.pageItem.active {
+  background-color: #4B5C94;
 }
 
 .pageLink {

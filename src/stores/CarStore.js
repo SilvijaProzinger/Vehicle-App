@@ -39,6 +39,10 @@ class CarStore {
   		return this.filteredCars.slice(this.indexOfFirstCar, this.indexOfLastCar)
   	}
 
+  	@computed get currentSortedCars (){
+  		return this.sortedCars.slice(this.indexOfFirstCar, this.indexOfLastCar)
+  	}
+
 	@computed get filteredCars(){
 		const matchesFilter = new RegExp(this.filter, "i")
 		return this.cars.filter(car => car !== null).filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
