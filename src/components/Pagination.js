@@ -16,6 +16,7 @@ const Pagination = ({ carsPerPage, totalCars, paginate}) => {
 						<a onClick={() => {
 							paginate(number)
 							setClicked(id)
+							//apply active class only to element with clickedId
 						}} href="#" id={id} className={id === clickedId ? "pageItem a active" : ""}>
 						{number}
 						</a>

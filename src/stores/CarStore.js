@@ -52,7 +52,7 @@ class CarStore {
     	return this.filteredCars.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
-  	//edit the car Vehicle Make property by it's id
+  	//edit the car Vehicle Make property by its id
 	@action editCar = (id) => {
 		this.cars[id].VehicleModel = this.modelInput.current.value
 		this.cars[id].VehicleMake = this.makeInput.current.value
@@ -75,6 +75,7 @@ class CarStore {
 		this.cars[id] = null
   	}
 
+  	//set the page to be whatever number is clicked on in Pagination component
   	@action setPage = (pageNumber) => {
   		this.currentPage = pageNumber
   		this.indexOfLastCar = (this.currentPage * this.carsPerPage)
