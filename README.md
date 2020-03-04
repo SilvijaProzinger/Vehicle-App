@@ -6,9 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Features
 * A list of cars from mobx store
 * Clicking on each car shows details about it 
+* Clicking on each vehicle make or model shows all the car that share the make/model
 * Edit the vehicle model
 * Filtering by vehicle make 
 * Sorting by vehicle make, alphabetically 
+* Paging
+* Options to add new cars and delete the existing ones
 
 ## How to run
 * Download or clone the repository
