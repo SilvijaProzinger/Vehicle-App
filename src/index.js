@@ -5,10 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'mobx-react';
-import CarStore from './stores/CarStore.js';
+import rootStore from './stores/RootStore.js';
+
 
 const Root = (
-	<Provider CarStore={CarStore}>
+	<Provider 
+		rootStore={rootStore}
+		vehicleMakeModuleStore={rootStore.vehicleMakeModuleStore}
+		vehicleMakeListViewStore={rootStore.vehicleMakeListViewStore}
+		vehicleModelModuleStore={rootStore.vehicleModelModuleStore}
+	>
 		<App/>
 	</Provider>
 )
