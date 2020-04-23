@@ -7,6 +7,7 @@ class RootStore {
 		this.vehicleMakeListViewStore = new VehicleMakeListViewStore(this)
 
 		this.vehicleModelModuleStore = new VehicleModelModuleStore(this)
+		this.vehicleModelListViewStore = new VehicleModelListViewStore(this)
 	}
 
 	@observable cars = [
@@ -38,11 +39,20 @@ class VehicleMakeListViewStore {
 	}
 
 	@observable filter = ""
+	@observable isSorted = false;
 
+	//list only car makes
 	@computed get listMakes(){
 		const matchesFilter = new RegExp(this.filter, "i")
 		return this.rootStore.cars.filter(car => car !== null).filter(car => !this.filter || matchesFilter.test(car.VehicleMake))
 	}
+
+	//list alphabetically sorted makes
+	@computed get sortedMakes() {
+    	return this.listMakes.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
+  	}
+
+
 }
 
 class VehicleModelModuleStore {
@@ -51,6 +61,26 @@ class VehicleModelModuleStore {
 	}
 }
 
+class VehicleModelListViewStore {
+	constructor(rootStore){
+		this.rootStore = rootStore
+	}
+
+	@observable filter = ""
+	@observable isSorted = false;
+
+	//list only car models
+	@computed get listModels(){
+		const matchesFilter = new RegExp(this.filter, "i")
+		return this.rootStore.cars.filter(car => car !== null).filter(car => !this.filter || matchesFilter.test(car.VehicleModel))
+	}
+
+	//list alphabetically sorted models
+	@computed get sortedModels() {
+    	return this.listModels.filter(car => car !== null).slice().sort((a, b) => (a.VehicleModel > b.VehicleModel) ? 1 : -1);
+  	}
+
+}
 /*
 class CarStore {
 	@observable makeInput = React.createRef();
