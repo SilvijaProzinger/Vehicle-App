@@ -41,6 +41,13 @@ class VehicleMakeListViewStore {
 	@observable filter = ""
 	@observable isSorted = false;
 
+	@observable newId = React.createRef();
+	@observable newMake = React.createRef();
+	@observable newLogo = React.createRef();
+
+    // save id of last car so that the user doesn't have to manually insert it
+	@observable lastId = this.rootStore.cars.slice(-1)[0].id
+
 	//list only car makes
 	@computed get listMakes(){
 		const matchesFilter = new RegExp(this.filter, "i")
@@ -51,6 +58,15 @@ class VehicleMakeListViewStore {
 	@computed get sortedMakes() {
     	return this.listMakes.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
+
+  	//add a new car 
+	@action addCar = ({id, VehicleMake, logo}) => {
+		this.rootStore.cars.push({
+			id: ++this.lastId, 
+			VehicleMake: this.newMake.current.value, 
+			logo: this.newLogo.current.value
+		})
+	}
 
 
 }

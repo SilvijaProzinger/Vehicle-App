@@ -18,9 +18,18 @@ class VehicleMakeList extends Component {
 		this.props.rootStore.vehicleMakeListViewStore.isSorted = true
 	}
 
-
 	render(){
 		const { filter } = this.props.rootStore.vehicleMakeListViewStore
+
+		const addOption = () => {
+			return (
+			<>
+				<div className="addDiv">
+				<Link to={`/addMake`} style={{ textDecoration: 'none' }}><button className="button addButton">Add new make</button></Link>
+				</div>
+			</>
+			)
+		}
 
 		const filterAndSort = () => {
 			return (
@@ -46,6 +55,7 @@ class VehicleMakeList extends Component {
 			<h2 style={{textAlign: 'center', padding: '20px'}}className="page-title">Vehicle Makes</h2>
 			<div className="options">
 			{filterAndSort()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleMakeListViewStore.listMakes.map((make) => (
@@ -65,6 +75,7 @@ class VehicleMakeList extends Component {
 			<h2 style={{textAlign: 'center', padding: '20px'}} className="page-title">Vehicle Makes</h2>
 			<div className="options">
 			{filterAndSort()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleMakeListViewStore.sortedMakes.map((make) => (
