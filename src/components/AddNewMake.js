@@ -1,32 +1,38 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 const AddNewMake = ({rootStore, vehicleMakeListViewStore}) => {
 
+	const [ newMake, setNewMake ] = useState('')
+	const [ newLogo, setNewLogo ] = useState('')
+
 	const add = (e) => {
+		console.log(newMake, newLogo)
 		e.preventDefault()
-		rootStore.vehicleMakeListViewStore.addCar(rootStore.vehicleMakeListViewStore.newMake.current.value)	
+		rootStore.vehicleMakeListViewStore.addCar(newMake, newLogo)	
 	}
 
 	return (
 	<>
 		<Link to="/"><button className="button closeNewButton">X</button></Link>
 		<div className="addForm">
-		<h3 className="title">Add a new car</h3>
+		<h3 className="title">Add a new make</h3>
 		<form>
 			<input className="addInput"
 				type="text"
 				placeholder="Enter a vehicle make"
-				ref={rootStore.vehicleMakeListViewStore.newMake}
+				value={newMake}
+				onChange={e => setNewMake(e.target.value)}
 			/>
 			<input className="addInput"
 				type="text"
 				placeholder="Enter url for vehicle logo image"
-				ref={rootStore.vehicleMakeListViewStore.newLogo}
+				value={newLogo}
+				onChange={e => setNewLogo(e.target.value)}
 			/>
 		</form>
-		<button className="button saveNewButton" onClick={add}><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Save new car</Link></button>
+		<button className="button saveNewButton" onClick={add}><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Save new make</Link></button>
 		</div>
 	</>
 	)
