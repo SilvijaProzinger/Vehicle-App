@@ -59,7 +59,7 @@ class VehicleMakeListViewStore {
   	}
 
   	//add a new car 
-	@action addCar = ({id, newMake, newLogo}) => {
+	@action addCar = ({lastId, newMake, newLogo}) => {
 		console.log(newMake, newLogo)
 		this.rootStore.cars.push({
 			id: ++this.lastId, 
