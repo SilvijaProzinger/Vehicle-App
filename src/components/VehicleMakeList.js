@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
+import trashIcon from '../icons8-trash-64.png';
 
 @inject('rootStore', 'vehicleMakeListViewStore')
 @observer 
@@ -16,6 +17,12 @@ class VehicleMakeList extends Component {
 	//sort cars by Vehicle Make
 	sort = (e) => {
 		this.props.rootStore.vehicleMakeListViewStore.isSorted = true
+	}
+
+	//delete cars by id
+	delete = (id) => {
+		console.log(id)
+		this.props.rootStore.vehicleMakeListViewStore.removeCar(id)
 	}
 
 	render(){
@@ -59,7 +66,10 @@ class VehicleMakeList extends Component {
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleMakeListViewStore.listMakes.map((make) => (
-				        <div key={make.id} className="car">				 
+				        <div key={make.id} className="car">	
+				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>			 
 				        <img src={make.logo} alt="" className="listImage"/>
 				        <h3 className="carTitle">{make.VehicleMake}</h3>
 				        </div>
@@ -79,7 +89,10 @@ class VehicleMakeList extends Component {
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleMakeListViewStore.sortedMakes.map((make) => (
-				        <div key={make.id} className="car">				 
+				        <div key={make.id} className="car">
+				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>				 
 				        <img src={make.logo} alt="" className="listImage"/>
 				        <h3 className="carTitle">{make.VehicleMake}</h3>
 				        </div>

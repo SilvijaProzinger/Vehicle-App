@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
+import trashIcon from '../icons8-trash-64.png';
 
 @inject('rootStore', 'vehicleModelListViewStore')
 @observer 
@@ -16,6 +17,12 @@ class VehicleModelList extends Component {
 	//sort cars by Vehicle Model
 	sort = (e) => {
 		this.props.rootStore.vehicleModelListViewStore.isSorted = true
+	}
+
+	//delete cars by id
+	delete = (id) => {
+		console.log(id)
+		this.props.rootStore.vehicleModelListViewStore.removeCar(id)
 	}
 
 	render(){
@@ -49,7 +56,10 @@ class VehicleModelList extends Component {
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleModelListViewStore.listModels.map((model) => (
-				        <div key={model.id} className="car">				 
+				        <div key={model.id} className="car">
+				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, model.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>				 
 				        <img src={model.image} alt="" className="listImage"/>
 				        <h3 className="carTitle">{model.VehicleModel}</h3>
 				        </div>
@@ -69,7 +79,10 @@ class VehicleModelList extends Component {
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleModelListViewStore.sortedModels.map((model) => (
-				        <div key={model.id} className="car">				 
+				        <div key={model.id} className="car">
+				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, model.id)}>
+				        	<img src={trashIcon} alt="" className="deleteIcon" />
+				        </button>				 
 				        <img src={model.image} alt="" className="listImage"/>
 				        <h3 className="carTitle">{model.VehicleModel}</h3>
 				        </div>

@@ -68,6 +68,12 @@ class VehicleMakeListViewStore {
 		})
 	}
 
+	//delete a car by id 
+	@action removeCar = (id) => {
+		//had to replace the splice method so that the cars array isn't mutated after deleting 
+		this.rootStore.cars[id] = null
+  	}
+
 
 }
 
@@ -94,6 +100,12 @@ class VehicleModelListViewStore {
 	//list alphabetically sorted models
 	@computed get sortedModels() {
     	return this.listModels.filter(car => car !== null).slice().sort((a, b) => (a.VehicleModel > b.VehicleModel) ? 1 : -1);
+  	}
+
+  	//delete a car by id 
+	@action removeCar = (id) => {
+		//had to replace the splice method so that the cars array isn't mutated after deleting 
+		this.rootStore.cars[id] = null
   	}
 
 }
