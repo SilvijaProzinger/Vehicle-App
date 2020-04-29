@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import trashIcon from '../icons8-trash-64.png';
 
-@inject('rootStore', 'vehicleMakeListViewStore')
+@inject('rootStore', 'vehicleMakeModuleStore', 'vehicleMakeListViewStore')
 @observer 
 
 class VehicleMakeList extends Component {
@@ -22,7 +22,7 @@ class VehicleMakeList extends Component {
 	//delete cars by id
 	delete = (id) => {
 		console.log(id)
-		this.props.rootStore.vehicleMakeListViewStore.removeCar(id)
+		this.props.rootStore.vehicleMakeModuleStore.removeCar(id)
 	}
 
 	render(){

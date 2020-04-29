@@ -30,6 +30,26 @@ class VehicleMakeModuleStore {
 		this.rootStore = rootStore
 	}
 
+	//delete a car by id 
+	@action removeCar = (id) => {
+		//had to replace the splice method so that the cars array isn't mutated after deleting 
+		this.rootStore.cars[id] = null
+  	}
+
+  	@observable newMake = ''
+	@observable newLogo = ''
+	
+  	//add a new car 
+	@action addCar = ({lastId, newMake, newLogo}) => {
+		console.log(newMake, newLogo)
+		this.rootStore.cars.push({
+			id: ++this.lastId, 
+			VehicleMake: this.newMake, 
+			logo: this.newLogo
+		})
+	}
+
+
 
 }
 
@@ -40,9 +60,6 @@ class VehicleMakeListViewStore {
 
 	@observable filter = ""
 	@observable isSorted = false;
-
-	//@observable newMake = React.createRef();
-	//@observable newLogo = React.createRef();
 
     // save id of last car so that the user doesn't have to manually insert it
 	@observable lastId = this.rootStore.cars.slice(-1)[0].id
@@ -58,14 +75,11 @@ class VehicleMakeListViewStore {
     	return this.listMakes.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
-  	//add a new car 
-	@action addCar = ({lastId, newMake, newLogo}) => {
-		console.log(newMake, newLogo)
-		this.rootStore.cars.push({
-			id: ++this.lastId, 
-			VehicleMake: newMake, 
-			logo: newLogo
-		})
+}
+
+class VehicleModelModuleStore {
+	constructor(rootStore){
+		this.rootStore = rootStore
 	}
 
 	//delete a car by id 
@@ -73,14 +87,6 @@ class VehicleMakeListViewStore {
 		//had to replace the splice method so that the cars array isn't mutated after deleting 
 		this.rootStore.cars[id] = null
   	}
-
-
-}
-
-class VehicleModelModuleStore {
-	constructor(rootStore){
-		this.rootStore = rootStore
-	}
 }
 
 class VehicleModelListViewStore {
@@ -100,12 +106,6 @@ class VehicleModelListViewStore {
 	//list alphabetically sorted models
 	@computed get sortedModels() {
     	return this.listModels.filter(car => car !== null).slice().sort((a, b) => (a.VehicleModel > b.VehicleModel) ? 1 : -1);
-  	}
-
-  	//delete a car by id 
-	@action removeCar = (id) => {
-		//had to replace the splice method so that the cars array isn't mutated after deleting 
-		this.rootStore.cars[id] = null
   	}
 
 }
