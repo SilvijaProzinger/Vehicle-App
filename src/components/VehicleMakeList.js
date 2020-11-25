@@ -65,7 +65,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleMakeListViewStore.listMakes.map((make) => (
+	      			{this.props.rootStore.vehicleMakeListViewStore.listMakes.map((make) => (
 				        <div key={make.id} className="car">	
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -88,7 +88,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleMakeListViewStore.sortedMakes.map((make) => (
+	      			{this.props.rootStore.vehicleMakeListViewStore.sortedMakes.map((make) => (
 				        <div key={make.id} className="car">
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
