@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import trashIcon from '../icons8-trash-64.png';
 
-@inject('rootStore', 'vehicleMakeModuleStore', 'vehicleMakeListViewStore')
+@inject('vehicleMakeModuleStore', 'vehicleMakeListViewStore')
 @observer 
 
 class VehicleMakeList extends Component {
@@ -11,22 +11,22 @@ class VehicleMakeList extends Component {
 	//filter the cars by Vehicle Make
 	filter = (e) => {
 	    e.preventDefault()
-	    this.props.rootStore.vehicleMakeListViewStore.filter = e.target.value
+	    this.props.vehicleMakeListViewStore.filter = e.target.value
 	}
 
 	//sort cars by Vehicle Make
 	sort = (e) => {
-		this.props.rootStore.vehicleMakeListViewStore.isSorted = true
+		this.props.vehicleMakeListViewStore.isSorted = true
 	}
 
 	//delete cars by id
 	delete = (id) => {
 		console.log(id)
-		this.props.rootStore.vehicleMakeModuleStore.removeCar(id)
+		this.props.vehicleMakeModuleStore.removeCar(id)
 	}
 
 	render(){
-		const { filter } = this.props.rootStore.vehicleMakeListViewStore
+		const { filter } = this.props.vehicleMakeListViewStore
 
 		const addOption = () => {
 			return (
@@ -65,7 +65,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.rootStore.vehicleMakeListViewStore.listMakes.map((make) => (
+	      			{this.props.vehicleMakeListViewStore.listMakes.map((make) => (
 				        <div key={make.id} className="car">	
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -88,7 +88,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.rootStore.vehicleMakeListViewStore.sortedMakes.map((make) => (
+	      			{this.props.vehicleMakeListViewStore.sortedMakes.map((make) => (
 				        <div key={make.id} className="car">
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -102,7 +102,7 @@ class VehicleMakeList extends Component {
 			)
 		}
 
-		return this.props.rootStore.vehicleMakeListViewStore.isSorted ? openSortedView() : openDefaultView()
+		return this.props.vehicleMakeListViewStore.isSorted ? openSortedView() : openDefaultView()
 	}
 
 }

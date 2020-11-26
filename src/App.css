@@ -291,6 +291,20 @@
   text-decoration: none;
 }
 
+.selector {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap
+}
+
+.selectorButton {
+  display: block;
+  margin: 0 auto;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
 /*media queries*/
 @media only screen and ((min-width: 483px) and (max-width: 681px)){
   .listImage {

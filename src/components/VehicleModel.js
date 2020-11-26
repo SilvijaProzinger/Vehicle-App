@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+//import { inject, observer } from 'mobx-react';
 //import { Link } from 'react-router-dom';
 import VehicleModelList from './VehicleModelList.js';
 
-@inject('rootStore', 'vehicleModelListViewStore')
-@observer 
+//@inject('rootStore', 'vehicleModelListViewStore')
+//@observer 
 
 class VehicleModel extends Component {
 

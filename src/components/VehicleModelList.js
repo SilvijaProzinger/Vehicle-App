@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import trashIcon from '../icons8-trash-64.png';
 
-@inject('rootStore', 'vehicleModelModuleStore', 'vehicleModelListViewStore')
+@inject('vehicleModelModuleStore', 'vehicleModelListViewStore')
 @observer 
 
 class VehicleModelList extends Component {
@@ -11,22 +11,22 @@ class VehicleModelList extends Component {
 	//filter the cars by Vehicle Model
 	filter = (e) => {
 	    e.preventDefault()
-	    this.props.rootStore.vehicleModelListViewStore.filter = e.target.value
+	    this.props.vehicleModelListViewStore.filter = e.target.value
 	}
 
 	//sort cars by Vehicle Model
 	sort = (e) => {
-		this.props.rootStore.vehicleModelListViewStore.isSorted = true
+		this.props.vehicleModelListViewStore.isSorted = true
 	}
 
 	//delete cars by id
 	delete = (id) => {
 		console.log(id)
-		this.props.rootStore.vehicleModelModuleStore.removeCar(id)
+		this.props.vehicleModelModuleStore.removeCar(id)
 	}
 
 	render(){
-		const { filter } = this.props.rootStore.vehicleModelListViewStore
+		const { filter } = this.props.vehicleModelListViewStore
 
 		const filterAndSort = () => {
 			return (
@@ -92,7 +92,7 @@ class VehicleModelList extends Component {
 			)
 		}
 		
-		return this.props.rootStore.vehicleModelListViewStore.isSorted ? openSortedView() : openDefaultView()
+		return this.props.vehicleModelListViewStore.isSorted ? openSortedView() : openDefaultView()
 	}
 }
 

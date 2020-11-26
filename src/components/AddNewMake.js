@@ -2,15 +2,15 @@ import React, { useState} from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
-const AddNewMake = ({rootStore, vehicleMakeAddStore}) => {
+const AddNewMake = ({vehicleMakeAddStore}) => {
 
-	const [ newMake, setNewMake ] = useState(rootStore.vehicleMakeAddStore.newMake)
-	const [ newLogo, setNewLogo ] = useState(rootStore.vehicleMakeAddStore.newLogo)
+	const [ newMake, setNewMake ] = useState(vehicleMakeAddStore.newMake)
+	const [ newLogo, setNewLogo ] = useState(vehicleMakeAddStore.newLogo)
 
 	const add = (e) => {
 		console.log(newMake, newLogo)
 		e.preventDefault()
-		rootStore.vehicleMakeAddStore.addCar(newMake, newLogo)	
+		vehicleMakeAddStore.addCar(newMake, newLogo)	
 	}
 
 	return (
@@ -38,4 +38,4 @@ const AddNewMake = ({rootStore, vehicleMakeAddStore}) => {
 	)
 }
 
-export default inject ('rootStore', 'vehicleMakeAddStore') (observer(AddNewMake))
+export default inject ('vehicleMakeAddStore') (observer(AddNewMake))

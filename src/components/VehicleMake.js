@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+//import { inject, observer } from 'mobx-react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import VehicleMakeList from './VehicleMakeList.js';
-import AddNewMake from './AddNewMake.js';
+//import AddNewMake from './AddNewMake.js';
 
-@inject('rootStore', 'vehicleMakeListViewStore')
-@observer 
+//@inject('rootStore', 'vehicleMakeListViewStore')
+//@observer 
 
 class VehicleMake extends Component {
 
@@ -13,7 +13,7 @@ class VehicleMake extends Component {
 		return (
 			<div>
 			<Router>
-				<Route exact path="/addMake" component={AddNewMake} />
+				{/*<Route exact path="/addMake" component={AddNewMake} />*/}
 				<VehicleMakeList />
 			</Router>
 			</div>

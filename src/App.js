@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header.js';
+import Home from './components/Home.js';
 //import Cars from './components/Cars.js';
 //import CarDetails from './components/CarDetails.js';
 import VehicleMake from './components/VehicleMake.js';
-import VehicleModel from './components/VehicleModel.js';
-import AddNewMake from './components/AddNewMake.js';
+//import VehicleModel from './components/VehicleModel.js';
+//import AddNewMake from './components/AddNewMake.js';
 import './App.css';
 
 class App extends Component {
@@ -14,13 +15,12 @@ class App extends Component {
       <div className="App">
       <Router>
         <Header text="Vehicle App"/>
-        <Route exact path="/" component={VehicleMake}/>
-        <Route exact path="/" component={VehicleModel}/>
-        {/*<Route exact path="/" component={Cars} />*/}
-        {/*<Route exact path="/car/:carId" component={CarDetails}/>*/}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/makes" component={VehicleMake} />
+        {/*<Route exact path="/models" component={VehicleModel}/>*/}
         {/*<Route exact path="/makes/:carMake" component={VehicleMake} />*/}
         {/*<Route exact path="/models/:carModel" component={VehicleModel}/>*/}
-        <Route exact path="/addMake" component={AddNewMake} />
+        {/*<Route exact path="/addMake" component={AddNewMake} />*/}
       </Router>
       </div>
     )
