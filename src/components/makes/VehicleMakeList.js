@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
-import trashIcon from '../icons8-trash-64.png';
+import trashIcon from '../../icons8-trash-64.png';
 
 @inject('vehicleMakeModuleStore', 'vehicleMakeListViewStore')
 @observer 

@@ -4,9 +4,9 @@ import Header from './components/Header.js';
 import Home from './components/Home.js';
 //import Cars from './components/Cars.js';
 //import CarDetails from './components/CarDetails.js';
-import VehicleMake from './components/VehicleMake.js';
+import VehicleMake from './components/makes/VehicleMake.js';
 //import VehicleModel from './components/VehicleModel.js';
-//import AddNewMake from './components/AddNewMake.js';
+import AddNewMake from './components/makes/AddNewMake.js';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
         {/*<Route exact path="/models" component={VehicleModel}/>*/}
         {/*<Route exact path="/makes/:carMake" component={VehicleMake} />*/}
         {/*<Route exact path="/models/:carModel" component={VehicleModel}/>*/}
-        {/*<Route exact path="/addMake" component={AddNewMake} />*/}
+        <Route exact path="/addMake" component={AddNewMake} />
       </Router>
       </div>
     )

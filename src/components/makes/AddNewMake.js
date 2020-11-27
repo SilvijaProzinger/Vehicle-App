@@ -15,7 +15,7 @@ const AddNewMake = ({vehicleMakeAddStore}) => {
 
 	return (
 	<>
-		<Link to="/"><button className="button closeNewButton">X</button></Link>
+		<Link to="/makes"><button className="button closeNewButton">X</button></Link>
 		<div className="addForm">
 		<h3 className="title">Add a new make</h3>
 		<form>
@@ -32,7 +32,7 @@ const AddNewMake = ({vehicleMakeAddStore}) => {
 				onChange={e => setNewLogo(e.target.value)}
 			/>
 		</form>
-		<button className="button saveNewButton" onClick={add}><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Save new make</Link></button>
+		<button className="button saveNewButton" onClick={add}><Link to="/makes" style={{ textDecoration: 'none', color: 'white' }}>Save new make</Link></button>
 		</div>
 	</>
 	)

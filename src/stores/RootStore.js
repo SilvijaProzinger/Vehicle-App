@@ -1,11 +1,9 @@
-import React from 'react';
+//import React from 'react';
 import { observable, computed, action } from 'mobx';
 
 class RootStore {
 	constructor(){
 		this.vehicleMakeModuleStore = new VehicleMakeModuleStore(this)
-		//this.vehicleMakeListViewStore = new VehicleMakeListViewStore(this)
-		//this.vehicleMakeAddStore = new VehicleMakeAddStore(this)
 
 		//this.vehicleModelModuleStore = new VehicleModelModuleStore(this)
 		//this.vehicleModelListViewStore = new VehicleModelListViewStore(this)
@@ -30,6 +28,7 @@ class VehicleMakeModuleStore {
 	constructor(rootStore){
 		this.rootStore = rootStore
 		this.vehicleMakeListViewStore = new VehicleMakeListViewStore(this)
+		this.vehicleMakeAddStore = new VehicleMakeAddStore(this)
 	}
 
 	@observable makes = [
@@ -74,13 +73,13 @@ class VehicleMakeListViewStore {
 
 }
 
-/*class VehicleMakeAddStore {
-	constructor(rootStore){
-		this.rootStore = rootStore
+class VehicleMakeAddStore {
+	constructor(vehicleMakeModuleStore){
+		this.vehicleMakeModuleStore = vehicleMakeModuleStore
 	}
 
 	// save id of last car so that the user doesn't have to manually insert it
-	@observable lastId = this.rootStore.cars.slice(-1)[0].id
+	@observable lastId = this.vehicleMakeModuleStore.makes.slice(-1)[0].id
 
 	@observable newMake = ''
 	@observable newLogo = ''
@@ -88,7 +87,7 @@ class VehicleMakeListViewStore {
   	//add a new car 
 	@action addCar = ({lastId, newMake, newLogo}) => {
 		console.log(newMake, newLogo)
-		this.rootStore.cars.push({
+		this.vehicleMakeModuleStore.makes.push({
 			id: ++this.lastId, 
 			VehicleMake: this.newMake, 
 			logo: this.newLogo
@@ -97,6 +96,7 @@ class VehicleMakeListViewStore {
 
 }
 
+/*
 class VehicleModelModuleStore {
 	constructor(rootStore){
 		this.rootStore = rootStore
