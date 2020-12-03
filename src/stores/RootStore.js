@@ -1,4 +1,4 @@
-//import React from 'react';
+import React from 'react';
 import { observable, computed, action } from 'mobx';
 
 class RootStore {
@@ -29,6 +29,7 @@ class VehicleMakeModuleStore {
 		this.rootStore = rootStore
 		this.vehicleMakeListViewStore = new VehicleMakeListViewStore(this)
 		this.vehicleMakeAddStore = new VehicleMakeAddStore(this)
+		this.vehicleMakeEditViewStore = new VehicleMakeEditViewStore(this)
 	}
 
 	@observable makes = [
@@ -89,6 +90,23 @@ class VehicleMakeAddStore {
 			VehicleMake: newMake, 
 			logo: newLogo
 		})
+	}
+}
+
+class VehicleMakeEditViewStore {
+	constructor(vehicleMakeModuleStore){
+		this.vehicleMakeModuleStore = vehicleMakeModuleStore
+	}
+
+	@observable makeInput = React.createRef();
+	@observable logoInput = React.createRef();
+	@observable newId = React.createRef();
+	@observable newMake = React.createRef();
+	@observable newLogo = React.createRef();
+
+	@action editMake = (id) => {
+		this.vehicleMakeModuleStore.makes[id].VehicleMake = this.makeInput.current.value
+		this.vehicleMakeModuleStore.makes[id].logo = this.logoInput.current.value
 	}
 
 }

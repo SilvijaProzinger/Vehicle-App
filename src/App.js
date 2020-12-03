@@ -7,6 +7,7 @@ import Home from './components/Home.js';
 import VehicleMake from './components/makes/VehicleMake.js';
 //import VehicleModel from './components/VehicleModel.js';
 import AddNewMake from './components/makes/AddNewMake.js';
+import VehicleMakeEditView from './components/makes/VehicleMakeEditView.js';
 import './App.css';
 
 class App extends Component {
@@ -17,10 +18,11 @@ class App extends Component {
         <Header text="Vehicle App"/>
         <Route exact path="/" component={Home} />
         <Route exact path="/makes" component={VehicleMake} />
+        <Route exact path="/addMake" component={AddNewMake} />
+        <Route exact path="/makes/:makeId" component={VehicleMakeEditView} />
         {/*<Route exact path="/models" component={VehicleModel}/>*/}
         {/*<Route exact path="/makes/:carMake" component={VehicleMake} />*/}
         {/*<Route exact path="/models/:carModel" component={VehicleModel}/>*/}
-        <Route exact path="/addMake" component={AddNewMake} />
       </Router>
       </div>
     )

@@ -71,7 +71,7 @@ class VehicleMakeList extends Component {
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
 				        </button>			 
 				        <img src={make.logo} alt="" className="listImage"/>
-				        <h3 className="carTitle">{make.VehicleMake}</h3>
+				        <Link to={`/makes/${make.id}`}><h3 className="carTitle">{make.VehicleMake}</h3></Link>
 				        </div>
 	        		))}
 	      		</div>
@@ -94,7 +94,7 @@ class VehicleMakeList extends Component {
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
 				        </button>				 
 				        <img src={make.logo} alt="" className="listImage"/>
-				        <h3 className="carTitle">{make.VehicleMake}</h3>
+				        <Link to={`/makes/${make.id}`}><h3 className="carTitle">{make.VehicleMake}</h3></Link>
 				        </div>
 	        		))}
 	      		</div>
