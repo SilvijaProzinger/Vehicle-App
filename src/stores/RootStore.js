@@ -98,15 +98,9 @@ class VehicleMakeEditViewStore {
 		this.vehicleMakeModuleStore = vehicleMakeModuleStore
 	}
 
-	@observable makeInput = React.createRef();
-	@observable logoInput = React.createRef();
-	@observable newId = React.createRef();
-	@observable newMake = React.createRef();
-	@observable newLogo = React.createRef();
-
-	@action editMake = (id) => {
-		this.vehicleMakeModuleStore.makes[id].VehicleMake = this.makeInput.current.value
-		this.vehicleMakeModuleStore.makes[id].logo = this.logoInput.current.value
+	@action editMake = (id, make, logo) => {
+		this.vehicleMakeModuleStore.makes[id].VehicleMake = make
+		this.vehicleMakeModuleStore.makes[id].logo = logo
 	}
 
 }

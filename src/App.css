@@ -168,6 +168,16 @@
   flex-grow: 30% 70%;
 }
 
+.editDiv {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.closeButtonDiv {
+  position: fixed;
+  right: 20px;
+}
+
 .editInput {
   text-align: center;
   padding: 8px;
