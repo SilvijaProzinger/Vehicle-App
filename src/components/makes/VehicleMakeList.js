@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import trashIcon from '../../icons8-trash-64.png';
+import Pagination from '../Pagination.js'
 
 @inject('vehicleMakeModuleStore', 'vehicleMakeListViewStore')
 @observer 
@@ -23,6 +24,10 @@ class VehicleMakeList extends Component {
 	delete = (id) => {
 		console.log(id)
 		this.props.vehicleMakeModuleStore.removeCar(id)
+	}
+
+	paginate = (pageNumber) => {
+		this.props.vehicleMakeListViewStore.setPage(pageNumber)
 	}
 
 	render(){
@@ -65,7 +70,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleMakeListViewStore.listMakes.map((make) => (
+	      			{this.props.vehicleMakeListViewStore.currentCars.map((make) => (
 				        <div key={make.id} className="car">	
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -75,6 +80,11 @@ class VehicleMakeList extends Component {
 				        </div>
 	        		))}
 	      		</div>
+	      		<Pagination 
+	      			carsPerPage={this.props.vehicleMakeListViewStore.carsPerPage} 
+	      			totalCars={this.props.vehicleMakeListViewStore.listMakes.length}
+	      			paginate={this.paginate}
+	      		/>
 	      	</>
 			)
 		}
@@ -88,7 +98,7 @@ class VehicleMakeList extends Component {
 			{addOption()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleMakeListViewStore.sortedMakes.map((make) => (
+	      			{this.props.vehicleMakeListViewStore.currentSortedCars.map((make) => (
 				        <div key={make.id} className="car">
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, make.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -98,6 +108,11 @@ class VehicleMakeList extends Component {
 				        </div>
 	        		))}
 	      		</div>
+	      		<Pagination 
+	      			carsPerPage={this.props.vehicleMakeListViewStore.carsPerPage} 
+	      			totalCars={this.props.vehicleMakeListViewStore.sortedMakes.length}
+	      			paginate={this.paginate}
+	      		/>
 	      	</>
 			)
 		}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
-import trashIcon from '../icons8-trash-64.png';
+import trashIcon from '../../icons8-trash-64.png';
+import Pagination from '../Pagination.js';
 
 @inject('vehicleModelModuleStore', 'vehicleModelListViewStore')
 @observer 
@@ -23,6 +24,10 @@ class VehicleModelList extends Component {
 	delete = (id) => {
 		console.log(id)
 		this.props.vehicleModelModuleStore.removeCar(id)
+	}
+
+	paginate = (pageNumber) => {
+		this.props.vehicleModelListViewStore.setPage(pageNumber)
 	}
 
 	render(){
@@ -49,13 +54,12 @@ class VehicleModelList extends Component {
 		const openDefaultView = () => {
 			return (
 			<>
-			<hr className="divider"/>
 			<h2 style={{textAlign: 'center', padding: '20px'}} className="page-title">Vehicle Models</h2>
 			<div className="options">
 			{filterAndSort()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleModelListViewStore.listModels.map((model) => (
+	      			{this.props.vehicleModelListViewStore.currentCars.map((model) => (
 				        <div key={model.id} className="car">
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, model.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -65,6 +69,11 @@ class VehicleModelList extends Component {
 				        </div>
 	        		))}
 	      		</div>
+	      		<Pagination 
+	      			carsPerPage={this.props.vehicleModelListViewStore.carsPerPage} 
+	      			totalCars={this.props.vehicleModelListViewStore.listModels.length}
+	      			paginate={this.paginate}
+	      		/>
 	      	</>
 			)
 		}
@@ -72,13 +81,12 @@ class VehicleModelList extends Component {
 		const openSortedView = () => {
 			return (
 			<>
-			<hr className="divider"/>
 			<h2 style={{textAlign: 'center', padding: '20px'}} className="page-title">Vehicle Models</h2>
 			<div className="options">
 			{filterAndSort()}
 			</div>
 				<div className="carsDiv">
-	      			{this.props.vehicleModelListViewStore.sortedModels.map((model) => (
+	      			{this.props.vehicleModelListViewStore.currentSortedCars.map((model) => (
 				        <div key={model.id} className="car">
 				         <button className="delete" title="Delete car" onClick={this.delete.bind(this, model.id)}>
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
@@ -88,6 +96,11 @@ class VehicleModelList extends Component {
 				        </div>
 	        		))}
 	      		</div>
+	      		<Pagination 
+	      			carsPerPage={this.props.vehicleModelListViewStore.carsPerPage} 
+	      			totalCars={this.props.vehicleModelListViewStore.sortedModels.length}
+	      			paginate={this.paginate}
+	      		/>
 	      	</>
 			)
 		}
