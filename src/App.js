@@ -6,6 +6,8 @@ import VehicleMake from './components/makes/VehicleMake.js';
 import AddNewMake from './components/makes/AddNewMake.js';
 import VehicleMakeEditView from './components/makes/VehicleMakeEditView.js';
 import VehicleModel from './components/models/VehicleModel.js';
+import AddNewModel from './components/models/AddNewModel.js';
+import VehicleModelEditView from './components/models/VehicleModelEditView.js';
 import './App.css';
 
 class App extends Component {
@@ -19,8 +21,8 @@ class App extends Component {
         <Route exact path="/addMake" component={AddNewMake} />
         <Route exact path="/makes/:makeId" component={VehicleMakeEditView} />
         <Route exact path="/models" component={VehicleModel}/>
-        {/*<Route exact path="/makes/:carMake" component={VehicleMake} />*/}
-        {/*<Route exact path="/models/:carModel" component={VehicleModel}/>*/}
+        <Route exact path="/addModel" component={AddNewModel} />
+        <Route exact path="/models/:modelId" component={VehicleModelEditView} />
       </Router>
       </div>
     )

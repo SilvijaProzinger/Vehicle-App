@@ -17,6 +17,8 @@ const Root = (
 		vehicleMakeEditViewStore={rootStore.vehicleMakeModuleStore.vehicleMakeEditViewStore}
 		vehicleModelModuleStore={rootStore.vehicleModelModuleStore}
 		vehicleModelListViewStore={rootStore.vehicleModelModuleStore.vehicleModelListViewStore}
+		vehicleModelAddStore={rootStore.vehicleModelModuleStore.vehicleModelAddStore}
+		vehicleModelEditViewStore={rootStore.vehicleModelModuleStore.vehicleModelEditViewStore}
 	>
 		<App/>
 	</Provider>

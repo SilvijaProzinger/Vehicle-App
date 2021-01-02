@@ -33,6 +33,16 @@ class VehicleModelList extends Component {
 	render(){
 		const { filter } = this.props.vehicleModelListViewStore
 
+		const addOption = () => {
+			return (
+			<>
+				<div className="addDiv">
+				<Link to={`/addModel`} style={{ textDecoration: 'none' }}><button className="button addButton">Add new model</button></Link>
+				</div>
+			</>
+			)
+		}
+
 		const filterAndSort = () => {
 			return (
 				<>
@@ -41,7 +51,7 @@ class VehicleModelList extends Component {
 			    <form onSubmit={e => this.filter(e)}>
 			        <input className="filter"
 			        type="text" 
-			        placeholder="Filter by vehicle make" 
+			        placeholder="Filter by vehicle model" 
 			        value={filter}
 			        onChange={this.filter.bind(this)}
 			        />
@@ -57,6 +67,7 @@ class VehicleModelList extends Component {
 			<h2 style={{textAlign: 'center', padding: '20px'}} className="page-title">Vehicle Models</h2>
 			<div className="options">
 			{filterAndSort()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleModelListViewStore.currentCars.map((model) => (
@@ -65,7 +76,7 @@ class VehicleModelList extends Component {
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
 				        </button>				 
 				        <img src={model.image} alt="" className="listImage"/>
-				        <h3 className="carTitle">{model.VehicleModel}</h3>
+				        <Link to={`/models/${model.id}`}><h3 className="carTitle">{model.VehicleModel}</h3></Link>
 				        </div>
 	        		))}
 	      		</div>
@@ -84,6 +95,7 @@ class VehicleModelList extends Component {
 			<h2 style={{textAlign: 'center', padding: '20px'}} className="page-title">Vehicle Models</h2>
 			<div className="options">
 			{filterAndSort()}
+			{addOption()}
 			</div>
 				<div className="carsDiv">
 	      			{this.props.vehicleModelListViewStore.currentSortedCars.map((model) => (
@@ -92,7 +104,7 @@ class VehicleModelList extends Component {
 				        	<img src={trashIcon} alt="" className="deleteIcon" />
 				        </button>				 
 				        <img src={model.image} alt="" className="listImage"/>
-				        <h3 className="carTitle">{model.VehicleModel}</h3>
+				        <Link to={`/models/${model.id}`}><h3 className="carTitle">{model.VehicleModel}</h3></Link>
 				        </div>
 	        		))}
 	      		</div>
