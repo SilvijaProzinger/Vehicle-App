@@ -1,17 +1,15 @@
 # Vehicle App
 
-A simple gallery of cars by vehicle make and model, made with react and mobx. Other functionalities to be added soon. 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple gallery of vehicles by vehicle make and model, made with react and mobx. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Features
-* A list of cars from mobx store
-* Clicking on each car shows details about it 
-* Clicking on each vehicle make or model shows all the car that share the make/model
-* Edit the vehicle model
-* Filtering by vehicle make 
-* Sorting by vehicle make, alphabetically 
+* A list of vehicles from mobx store, split into vehicle makes and vehicle models
+* Clicking on each make/model shows details about it 
+* Edit the vehicle make/model
+* Filtering by name
+* Sorting by name, alphabetically in ascending way
 * Paging
-* Options to add new cars and delete the existing ones
+* Options to add new makes or models and delete the existing ones
 
 ## How to run
 * Download or clone the repository
