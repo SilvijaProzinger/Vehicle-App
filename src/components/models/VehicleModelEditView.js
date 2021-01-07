@@ -28,7 +28,7 @@ const VehicleModelEditView = ({ vehicleModelModuleStore, vehicleModelEditViewSto
 			  		defaultValue={model}
 			  		onChange={(event) => setModel(event.target.value)}
 			  		/>
-			  	<h3>Enter a new logo</h3>
+			  	<h3>Enter a new image</h3>
 			  		<input 
 			  		className="editInput"
 			  		type='text' 

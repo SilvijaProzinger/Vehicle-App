@@ -57,7 +57,7 @@ class VehicleMakeListViewStore {
     	return this.listMakes.filter(car => car !== null).slice().sort((a, b) => (a.VehicleMake > b.VehicleMake) ? 1 : -1);
   	}
 
-  	//get makes show on current page
+  	//show makes on current page
   	@computed get currentCars (){
   		return this.listMakes.slice(this.indexOfFirstCar, this.indexOfLastCar)
   	}
@@ -159,12 +159,12 @@ class VehicleModelListViewStore {
     	return this.listModels.filter(car => car !== null).slice().sort((a, b) => (a.VehicleModel > b.VehicleModel) ? 1 : -1);
   	}
 
-  	//get makes show on current page
+  	//show models on current page
   	@computed get currentCars (){
   		return this.listModels.slice(this.indexOfFirstCar, this.indexOfLastCar)
   	}
 
-  	//get sorted makes on current page
+  	//get sorted models on current page
   	@computed get currentSortedCars (){
   		return this.sortedModels.slice(this.indexOfFirstCar, this.indexOfLastCar)
   	}
@@ -196,7 +196,6 @@ class VehicleModelAddStore {
 			image: newImage
 		})
 	}
-
 }
 
 class VehicleModelEditViewStore {
